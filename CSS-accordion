@@ -1,145 +1,66 @@
 HTML
 
-<div class="wrap">
-    <input type="checkbox" checked>
-		<ul>
-      <li></li>
-			<li></li>
-      <li></li>
-      <li></li>
-		</ul>	
+<div class="acc-wraper">
+  <div class="accordion">
+    <div>
+      <img src="https://image.freepik.com/free-photo/lake-mountains_1204-507.jpg" alt="">
+    </div>
+    <div>
+      <img src="https://image.freepik.com/free-photo/sunlight-forest_1004-9.jpg" alt="">
+    </div>
+    <div>
+      <img src="https://image.freepik.com/free-photo/beautiful-green-park_1417-1443.jpg" alt="">
+    </div>
+    <div>
+      <img src="https://image.freepik.com/free-photo/waterfall-that-is-layer-thailand_1150-15650.jpg" alt="">
+    </div>
+    <div>
+      <img src="https://image.freepik.com/free-photo/sunrise-bali-jungle_1385-1644.jpg" alt="">
+    </div>
+    <div>
+      <img src="https://image.freepik.com/free-photo/grass-with-sunlight-countryside-suburban_53876-42989.jpg" alt="">
+    </div>
+  </div>
 </div>
-<div class="credits">
-  <a target="_blank" href="https://codepen.io/emoreno911">@emoreno911</a>
-<div>
 
 
 CSS
 
-
-
-@import "compass/css3";
-@mixin transition($transition...) {
-    -moz-transition:    $transition;
-    -ms-transition:      $transition;
-    -webkit-transition: $transition;
-    transition:         $transition;
+body{
+  background-color:rgb(0, 0, 40)
 }
 
-$bg1: "https://dl.dropbox.com/s/mbho5bqfofk6g99/pic.jpg";
-$bg2: "https://dl.dropbox.com/s/kioimintl0v9l4d/pic.jpg";
-$bg3: "https://dl.dropbox.com/s/7a60gndncwf81x8/pic.jpg";
-$bg4: "https://dl.dropbox.com/s/nkwuv9jz8i99309/pic.jpg";
-
-body { 
-  background: #444;
-  display: flex;
-  flex-direction: column;
-}
-
-.credits {
-  text-align: right;
-  margin-top: 15px;
-  a {
-    color: #222;
-    background-color: #f8dc3d;
-    font-family: "Segoe UI", "Ubuntu", monospace;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 2px 10px;
-    border-radius: 4px
-  }
-}
-
-ul {
-  list-style: none;
-  max-width: 1200px;
-  margin: 0 auto;
+.acc-wraper{
+  margin: 30px auto;
+  width:70%;
   
-  li {
-    float: left; 
-    width: 16.666%; 
-    height: 600px;
-    opacity: 0.4;
-    @include transition(all .5s ease-in-out);
-    
-    &:hover,
-    &:first-child ~ li:last-child {
-      width: 50%;
-      opacity: 1;
-      @include transition(all .5s ease-in-out);
-    }
-    
-    &:hover ~ li:last-child {
-      width: 16.666%;
-      opacity: 0.4;
-    }
-    
-    &:nth-child(1) {
-      background: url($bg1) top center no-repeat;
-    }
-    &:nth-child(2) {
-      background: url($bg2) top right no-repeat;
-    }
-    &:nth-child(3) {
-      background: url($bg3) top center no-repeat;
-    }
-    &:nth-child(4) {
-      background: url($bg4) top center no-repeat;
-    }
-  }
-  
-} // End ul
-
-/** Add cool filter efects **/
-ul li {
-  &::before {
-    content: "";
-    display:block;
-    width:0;
-    height:100%;
-    @include transition(all .5s ease-in-out);
-  }
-
-  &:nth-child(1)::before { background-color: rgba(255, 87, 34, .2)}
-  &:nth-child(2)::before { background-color: rgba(76, 175, 80, .25)}
-  &:nth-child(3)::before { background-color: rgba(33, 150, 243, .25)}
-  &:nth-child(4)::before { background-color: rgba(156, 39, 176, .2)}
 }
 
-input:checked ~ ul li::before { 
-  width: 100%;
-  @include transition(all .5s ease-in-out);
+.accordion{
+  display:flex;
+  flex-wrap:nowrap;
+  overflow:hidden;
+  width:100%;
+  height:350px
 }
 
-input[type="checkbox"] {
-  width:555px;
-  margin: 15px;
-  font-family: "Segoe UI", "Ubuntu", monospace;
-  color: white;
-  &::before { 
-    content: "Pure CSS Accordion";
-    font-size: 1.5em;
-    position: relative;
-    top:-10px;
-  }
-  &::after{
-    content: "Filters Enabled";
-    color: #caa;
-    position: relative;
-    top:-10px;
-    left: 5px;
-  }
+.accordion > div{
+  width:50%;
+  flex-grow:1;
+  flex-shrink:1;
+  overflow:hidden;
+  transition:all .5s ease;
+  border:5px solid aliceblue;
+  border-radius:50px;
+  position:relative
 }
 
-/** Layout fixes **/
-.credits a { 
-  margin-right: calc((100% - 1230px)/2); 
+.accordion > div:hover{
+  flex-shrink:0
 }
-input[type="checkbox"] { 
-  margin-left: calc((100% - 1160px)/2); 
-}
-@media (max-width: 1240px) {
-  .credits a { margin-right: 0px; }
-  input[type="checkbox"] { margin-left: 35px; }
+
+.accordion div img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
 }
